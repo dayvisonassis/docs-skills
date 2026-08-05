@@ -34,7 +34,7 @@ The output skeleton is in `references/template-rfc.md`.
 | `adrs_folder` | no | `docs/adrs` | ADRs to link from *Decisões relacionadas* |
 | `author` / `reviewers` / `status` | no | — | Metadata. Reviewers default to the participants found in the sources |
 | `language` | no | `pt-BR` | Output language |
-| `max_pages` | no | `4` | Length ceiling. See the concision guard |
+| `max_pages` | no | `4` | Length ceiling. Measured by the concision guard, which counts prose and tables separately |
 | `acceptance_criteria` | no | — | Path or inline checklist validated in Phase 4 |
 | `trace_sidecar` | no | `true` | Emit `docs/.trace/RFC.jsonl` |
 
@@ -146,9 +146,25 @@ Run this checklist. Fix and re-run, up to 3 iterations. Report what survives.
 - [ ] Altitude guard passes (see below)
 - [ ] `acceptance_criteria`, when provided, satisfied item by item
 
-**Concision guard.** Estimate pages at roughly 500 words per page. Over `max_pages`, do not
-trim evenly: find the section that absorbed FDD detail, cut that, and link the FDD instead.
-The oversized section is nearly always *Proposta técnica*.
+**Concision guard.** Measure prose and tables **separately** — a flat word count over a
+table-dense document reports pages that do not exist, and sends you trimming prose that was
+never the problem.
+
+1. Count prose words, excluding every line starting with `|`. Estimate ~500 words per page.
+2. Count table rows. Estimate ~35 rows per page.
+3. Pages = prose pages + table pages.
+
+Over `max_pages`, do not trim evenly. Look for the excess in this order:
+
+1. **FDD detail that leaked in** — cut it and link the FDD. Usually in *Proposta técnica*.
+2. **A table that duplicates another document** — the *Decisões relacionadas* table restating
+   the ADR index is the classic case. Replace it with a compact linked list.
+3. **Prose repeating the TL;DR** — the TL;DR states the approach once; the body should not
+   restate it before elaborating.
+
+Only after those three is even trimming the right move. Never cut a required alternative or a
+real open question to hit a word count: the ceiling exists to keep the document readable, not
+to remove content the reviewer needs.
 
 **Altitude guard.** The RFC has leaked into FDD territory if it contains any of: a full
 endpoint contract with request and response payloads, a table schema or column list, error
