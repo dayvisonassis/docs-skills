@@ -8,11 +8,13 @@ de cada uma. Se você só vai ler um documento deste repositório, leia este.
 | Skill | Produz | Responde |
 | --- | --- | --- |
 | `doc-prd` | `docs/PRD.md` | Por que e o quê? |
+| `doc-hld` | `docs/HLD.md` | Como o sistema se estrutura? |
 | `doc-rfc` | `docs/RFC.md` | Como propomos resolver, e o que está em aberto? |
 | `doc-adr` | `docs/adrs/ADR-NNN-*.md` | Por que decidimos exatamente assim? |
 | `doc-fdd` | `docs/FDD.md` | Como construir, em detalhe? |
 | `doc-tracker` | `docs/TRACKER.md` | De onde veio cada coisa? |
 | `doc-mermaid` | `docs/mermaid/*-diagrams.md` | Como isso se parece? |
+| `doc-c4` | `docs/c4/*.puml` | Como isso se parece, em camadas? |
 | `doc-process-readme` | `README.md` | Como este pacote foi produzido? |
 
 Você invoca todas diretamente. Nenhuma chama outra sozinha.
@@ -129,4 +131,22 @@ reporta o que não tem origem.
 
 ```
 doc-mermaid  source_document=docs/FDD.md
+doc-c4       source_document=docs/HLD.md
 ```
+
+Os dois se complementam e não competem. O `doc-mermaid` gera diagramas embutidos no Markdown,
+que renderizam direto no GitHub e servem para fluxo, algoritmo e contrato. O `doc-c4` gera
+arquivos PlantUML separados por nível, no modelo C4 clássico, e serve quando você precisa da
+progressão contexto, container, componente e código para públicos diferentes.
+
+### Sistema existente que ninguém documentou
+
+```
+doc-hld    sources=<código>, codebase_root=.
+doc-c4     source_document=docs/HLD.md
+doc-adr    sources=<código>   (as decisões visíveis na estrutura)
+```
+
+O `doc-hld` lê o código antes de perguntar qualquer coisa: a arquitetura real é a que está no
+código, não a que alguém acredita estar. Onde as duas divergem, ele registra a divergência,
+que costuma ser o achado mais útil do documento.

@@ -15,11 +15,13 @@ há nada ainda, a partir de uma entrevista estruturada.
 docs-skills/
 ├── skills/
 │   ├── doc-prd/              # PRD de feature: por que e o quê
+│   ├── doc-hld/              # arquitetura do sistema: como ele se estrutura
 │   ├── doc-rfc/              # proposta técnica submetida à revisão
 │   ├── doc-adr/              # ADRs em formato MADR, uma decisão por arquivo
 │   ├── doc-fdd/              # especificação de implementação
 │   ├── doc-tracker/          # matriz de rastreabilidade e auditoria contra alucinação
-│   ├── doc-mermaid/          # diagramas derivados de um documento técnico
+│   ├── doc-mermaid/          # diagramas Mermaid derivados de um documento técnico
+│   ├── doc-c4/               # diagramas C4 em PlantUML, um arquivo por nível
 │   └── doc-process-readme/   # o README que documenta como o pacote foi produzido
 └── docs/                     # docs-base compartilhados + o guia do workflow
 ```
@@ -133,8 +135,8 @@ Ou abra o Claude Code no projeto e confira se os nomes `doc-*` aparecem na lista
 fontes (transcrição, código, thread)
    │
    ├─► doc-adr ─► doc-rfc ─► doc-fdd ─► doc-prd
-   │                            │
-   │                            └─► doc-mermaid
+   │                 │          │
+   │              doc-hld    doc-mermaid / doc-c4
    │
    └────────────► doc-tracker ─► doc-process-readme
 ```

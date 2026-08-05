@@ -1,0 +1,81 @@
+{
+  "_comment": "Estrutura do JSON exportado pelo doc-hld. Chaves em inglês, valores no idioma de saída do documento. Campos vazios são omitidos. Não inclui anexos, stakeholders nem cronogramas.",
+  "meta": {
+    "system": "",
+    "hld_owner": "",
+    "version": "",
+    "date": "YYYY-MM-DD"
+  },
+  "objective": {
+    "technical_goal": "",
+    "problems_addressed": [],
+    "linked_systems": []
+  },
+  "architecture": {
+    "topology_overview": "",
+    "technologies": [],
+    "deployment": "cloud|on-premises|hybrid",
+    "patterns": []
+  },
+  "components": [
+    {
+      "name": "",
+      "responsibilities": [],
+      "dependencies": []
+    }
+  ],
+  "flows": {
+    "request_flow": [],
+    "data_flow": [],
+    "transaction_boundaries": []
+  },
+  "data_model": {
+    "entities": [],
+    "relationships": [],
+    "source_of_truth": "",
+    "retention": ""
+  },
+  "interfaces": [
+    {
+      "name": "",
+      "kind": "api|queue|stream|sdk",
+      "protocol": "",
+      "exposure": "internal|external",
+      "sla_limits": ""
+    }
+  ],
+  "scalability_availability": {
+    "strategies": [],
+    "caching": "",
+    "partitioning": "",
+    "sla_target": ""
+  },
+  "security": {
+    "authentication": "",
+    "authorization": "",
+    "secrets_management": "",
+    "encryption_in_transit": "",
+    "encryption_at_rest": "",
+    "pii_policy": ""
+  },
+  "observability": {
+    "logs": "",
+    "metrics": [],
+    "tracing": "",
+    "dashboards_alerts": []
+  },
+  "risks": [
+    {
+      "risk": "",
+      "probability": "low|medium|high",
+      "impact": "",
+      "mitigation": [],
+      "contingency_plan": ""
+    }
+  ],
+  "adrs_next_steps": {
+    "adrs": [],
+    "pending_decisions": [],
+    "next_steps": []
+  }
+}
