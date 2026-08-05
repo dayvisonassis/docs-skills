@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
+
+# Saída de trabalho gerada pelas skills durante testes locais
+/tmp/
+/scratch/
